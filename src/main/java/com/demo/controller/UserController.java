@@ -18,7 +18,7 @@ import java.util.List;
 //比如：商品列表：/items/queryItems.action
 public class UserController {
 
-//    @RequestMapping(value = "/index",method={RequestMethod.GET})
+    //    @RequestMapping(value = "/index",method={RequestMethod.GET})
 //    public String index(){
 //        return "index";
 //
@@ -27,15 +27,15 @@ public class UserController {
     private ItemsService itemsService;
 
     //商品查询
-    @RequestMapping("/index")
-    public ModelAndView queryItems() throws Exception{
+    @RequestMapping(value = "/index")
+    public ModelAndView queryItems() throws Exception {
         //调用Service查找数据库，查询商品列表，这里使用静态数据模拟
-        List<ItemsCustom> itemsList=itemsService.findItemsList(null);
+        List<ItemsCustom> itemsList = itemsService.findItemsList(null);
 
         //返回ModelAndView
-        ModelAndView modelAndView=new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView();
         //相当于request的setAttribute，在jsp页面中通过itemList来获取
-        modelAndView.addObject("itemsList",itemsList);
+        modelAndView.addObject("itemsList", itemsList);
         //指定视图
         modelAndView.setViewName("index");
         System.out.println("注解方式:ItemsComtroller......");
