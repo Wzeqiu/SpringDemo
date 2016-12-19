@@ -1,7 +1,7 @@
 package com.demo.controller;
 
-import com.demo.po.ItemsCustom;
-import com.demo.service.ItemsService;
+import com.demo.po.Week;
+import com.demo.service.WeekService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,22 +15,16 @@ import java.util.List;
 //使用@Controller来标识它是一个控制器
 @Controller
 //为了对url进行分类管理 ，可以在这里定义根路径，最终访问url是根路径+子路径
-//比如：商品列表：/items/queryItems.action
 public class UserController {
 
-    //    @RequestMapping(value = "/index",method={RequestMethod.GET})
-//    public String index(){
-//        return "index";
-//
-//    }
     @Autowired
-    private ItemsService itemsService;
+    private WeekService weekService;
 
     //商品查询
     @RequestMapping(value = "/index")
     public ModelAndView queryItems() throws Exception {
         //调用Service查找数据库，查询商品列表，这里使用静态数据模拟
-        List<ItemsCustom> itemsList = itemsService.findItemsList(null);
+        List<Week> itemsList = weekService.findWeekList(null);
 
         //返回ModelAndView
         ModelAndView modelAndView = new ModelAndView();
@@ -41,5 +35,6 @@ public class UserController {
         System.out.println("注解方式:ItemsComtroller......");
         return modelAndView;
     }
+
 
 }

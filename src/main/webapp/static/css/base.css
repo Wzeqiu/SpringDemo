@@ -1,0 +1,14 @@
+* {
+    padding: 0 auto;
+    margin: 0 auto;
+    border: none;
+    font-size: 14px;
+}
+
+ul, li, ol {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
