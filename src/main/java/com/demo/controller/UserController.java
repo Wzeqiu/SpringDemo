@@ -22,7 +22,7 @@ public class UserController {
 
     //商品查询
     @RequestMapping(value = "/index")
-    public ModelAndView queryItems() throws Exception {
+    public ModelAndView index() throws Exception {
         //调用Service查找数据库，查询商品列表，这里使用静态数据模拟
         List<Week> itemsList = weekService.findWeekList(null);
 
@@ -35,6 +35,20 @@ public class UserController {
         System.out.println("注解方式:ItemsComtroller......");
         return modelAndView;
     }
+    //商品查询
+    @RequestMapping(value = "/datas")
+    public ModelAndView datas() throws Exception {
+        //调用Service查找数据库，查询商品列表，这里使用静态数据模拟
+        List<Week> itemsList = weekService.findWeekList(null);
 
+        //返回ModelAndView
+        ModelAndView modelAndView = new ModelAndView();
+        //相当于request的setAttribute，在jsp页面中通过itemList来获取
+        modelAndView.addObject("itemsList", itemsList);
+        //指定视图
+        modelAndView.setViewName("datas");
+        System.out.println("注解方式:ItemsComtroller......");
+        return modelAndView;
+    }
 
 }

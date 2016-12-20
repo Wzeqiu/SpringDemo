@@ -131,14 +131,12 @@
             if (b > 10) {
                 $(".header_tab").css("background-color", "white");
                 $(".header_tab  a").css("color", "black");
-                $(".header_tab").animate({opacity: '1'});
-
             } else {
                 $(".header_tab").css("background-color", "transparent");
                 $(".header_tab a").css("color", "white");
-                $(".header_tab").animate({opacity: '0'});
-                }
+            }
         }
+
         $(document).ready(function (e) {
             $(window).scroll(function () {
                         gdjz();
