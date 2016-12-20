@@ -6,7 +6,7 @@
 
     <!-- 全局setting配置 ，根据需要再添加-->
 
-    <!-- 配置别名 -->
+    <!-- 配置别名 数据库表 实体 -->
     <typeAliases>
         <!-- 批量扫描别名 -->
         <package name="com.demo.po"/>

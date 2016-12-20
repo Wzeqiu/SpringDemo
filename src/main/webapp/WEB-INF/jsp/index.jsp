@@ -9,8 +9,9 @@
     <title>开发者周报</title>
     <link rel="stylesheet" type="text/css" href="/static/css/base.css">
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <script src="/static/js/jquery-3.1.1.min.js"/>
-    <style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <%--<script src="/static/js/jquery-3.1.1.min.js"/>--%>
+    <style type="text/css">
         .header {
             width: 100%;
             height: 450px;
@@ -78,23 +79,96 @@
         .message a:hover, .message a:active {
             color: #FF5722;
         }
+
+        .header_tab {
+            width: 100%;
+            height: 50px;
+            color: white;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 0 auto;
+            position: fixed;
+            top: 0px;
+        }
+
+        .header_tab a {
+            color: white;
+            font-weight: bold;
+            font-size: 22px;
+            position: relative;
+        }
+
+        .header_tab li {
+            float: left;
+            width: 166px;
+            text-align: center;
+            font-size: 22px;
+            line-height: 50px
+        }
+
+        .header_tab a:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            width: 0;
+            height: 4px;
+            background: white;
+            transition: all .3s;
+        }
+
+        .header_tab a:hover:before {
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
     </style>
+    <script type="text/javascript">
+        /* 导航栏变色 */
+        function gdjz() {
+            b = $(window).scrollTop();
+            console.log(b);
+            if (b > 10) {
+                $(".header_tab").css("background-color", "white");
+                $(".header_tab  a").css("color", "black");
+            } else {
+                $(".header_tab").css("background-color", "transparent");
+                $(".header_tab a").css("color", "white");
+            }
+        }
 
-    <script>
-        $(function () {
-            $('a#share').mouseenter(function () {
-                alert("哈哈哈");
-//                $(".share").attr("src", "/static/img/fenxiang1.jpg")
-            });
-            $("a#share").mouseleave(function () {
+        $(document).ready(function (e) {
+            $(window).scroll(function () {
+                        gdjz();
+                    }
 
-            })
-        })
+                    /*var a,b,c;
+                     a=$("#dh").offset().top;//元素相对于窗口的距离
+                     b=$(window).scrollTop(); //监控窗口已滚动的距离;
+                     c=$(document).height();//整个文档的高度
+                     d=$(window).height();//浏览器窗口的高度*/
+
+                    /*if(d+b>a+100){
+                     $("#dh").addClass("xz");
+                     }
+                     */
+            );
+        });
     </script>
+
 </head>
 <body>
 <div class="header">
-
+    <div class="header_tab">
+        <ul style="width: 996px;margin: 0 auto">
+            <li><a href="#">主页</a></li>
+            <li><a href="#">工具</a></li>
+            <li><a href="#">订阅</a></li>
+            <li><a href="#">投稿</a></li>
+            <li><a href="#">捐赠</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </div>
 </div>
 <div class="content">
     <div class="week">
@@ -148,7 +222,10 @@
         </c:forEach>
     </div>
     <%--week end--%>
-    <div class="page"></div>
+    <div class="page">
+
+
+    </div>
     <%--page end--%>
 </div>
 <%--content end--%>
