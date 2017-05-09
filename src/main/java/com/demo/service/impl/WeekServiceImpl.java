@@ -1,7 +1,7 @@
 package com.demo.service.impl;
 
 import com.demo.mapper.WeekMapper;
-import com.demo.po.Week;
+import com.demo.model.Week;
 import com.demo.service.WeekService;
 import org.springframework.beans.factory.annotation.Autowired;
 

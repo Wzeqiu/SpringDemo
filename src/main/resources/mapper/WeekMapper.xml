@@ -1,123 +1,123 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.demo.mapper.WeekMapper">
-    <resultMap id="BaseResultMap" type="com.demo.po.Week">
-        <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="headurl" property="headurl" jdbcType="VARCHAR"/>
-        <result column="nikename" property="nikename" jdbcType="VARCHAR"/>
-        <result column="time" property="time" jdbcType="DATE"/>
-        <result column="pinglun" property="pinglun" jdbcType="INTEGER"/>
-        <result column="title" property="title" jdbcType="VARCHAR"/>
-    </resultMap>
-    <sql id="Base_Column_List">
+  <resultMap id="BaseResultMap" type="com.demo.model.Week">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="headurl" property="headurl" jdbcType="VARCHAR"/>
+    <result column="nikename" property="nikename" jdbcType="VARCHAR"/>
+    <result column="time" property="time" jdbcType="DATE"/>
+    <result column="pinglun" property="pinglun" jdbcType="INTEGER"/>
+    <result column="title" property="title" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List">
     id, headurl, nikename, time, pinglun, title
   </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
-        from week
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from week
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from week
     where id = #{id,jdbcType=INTEGER}
   </delete>
-    <insert id="insert" parameterType="com.demo.po.Week">
-    insert into week (id, headurl, nikename, 
-      time, pinglun, title)
-    values (#{id,jdbcType=INTEGER}, #{headurl,jdbcType=VARCHAR}, #{nikename,jdbcType=VARCHAR}, 
-      #{time,jdbcType=DATE}, #{pinglun,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.demo.model.Week">
+    insert into week (id, headurl, nikename,
+    time, pinglun, title)
+    values (#{id,jdbcType=INTEGER}, #{headurl,jdbcType=VARCHAR}, #{nikename,jdbcType=VARCHAR},
+    #{time,jdbcType=DATE}, #{pinglun,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.demo.po.Week">
-        insert into week
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="headurl != null">
-                headurl,
-            </if>
-            <if test="nikename != null">
-                nikename,
-            </if>
-            <if test="time != null">
-                time,
-            </if>
-            <if test="pinglun != null">
-                pinglun,
-            </if>
-            <if test="title != null">
-                title,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=INTEGER},
-            </if>
-            <if test="headurl != null">
-                #{headurl,jdbcType=VARCHAR},
-            </if>
-            <if test="nikename != null">
-                #{nikename,jdbcType=VARCHAR},
-            </if>
-            <if test="time != null">
-                #{time,jdbcType=DATE},
-            </if>
-            <if test="pinglun != null">
-                #{pinglun,jdbcType=INTEGER},
-            </if>
-            <if test="title != null">
-                #{title,jdbcType=VARCHAR},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.demo.po.Week">
-        update week
-        <set>
-            <if test="headurl != null">
-                headurl = #{headurl,jdbcType=VARCHAR},
-            </if>
-            <if test="nikename != null">
-                nikename = #{nikename,jdbcType=VARCHAR},
-            </if>
-            <if test="time != null">
-                time = #{time,jdbcType=DATE},
-            </if>
-            <if test="pinglun != null">
-                pinglun = #{pinglun,jdbcType=INTEGER},
-            </if>
-            <if test="title != null">
-                title = #{title,jdbcType=VARCHAR},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.demo.po.Week">
+  <insert id="insertSelective" parameterType="com.demo.model.Week">
+    insert into week
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="headurl != null">
+        headurl,
+      </if>
+      <if test="nikename != null">
+        nikename,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="pinglun != null">
+        pinglun,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="headurl != null">
+        #{headurl,jdbcType=VARCHAR},
+      </if>
+      <if test="nikename != null">
+        #{nikename,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="pinglun != null">
+        #{pinglun,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.model.Week">
+    update week
+    <set>
+      <if test="headurl != null">
+        headurl = #{headurl,jdbcType=VARCHAR},
+      </if>
+      <if test="nikename != null">
+        nikename = #{nikename,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=DATE},
+      </if>
+      <if test="pinglun != null">
+        pinglun = #{pinglun,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.model.Week">
     update week
     set headurl = #{headurl,jdbcType=VARCHAR},
-      nikename = #{nikename,jdbcType=VARCHAR},
-      time = #{time,jdbcType=DATE},
-      pinglun = #{pinglun,jdbcType=INTEGER},
-      title = #{title,jdbcType=VARCHAR}
+    nikename = #{nikename,jdbcType=VARCHAR},
+    time = #{time,jdbcType=DATE},
+    pinglun = #{pinglun,jdbcType=INTEGER},
+    title = #{title,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
 
 
 
-    <!-- 商品列表查询 -->
-    <!-- parameterType：传入包装对象(包装了查询条件)
-        resultType：建议使用扩展对象
-     -->
-    <select id="findWeekList" resultMap="BaseResultMap" parameterType="com.demo.po.Week"
-    >
-        SELECT week.* FROM week
-        <where>
-            <if test="week!=null">
-                <if test="week.nikename!=null and week.nikename!=''">
-                    week.nikename LIKE '%${week.nikename}%'
-                </if>
-            </if>
-        </where>
-    </select>
+  <!-- 商品列表查询 -->
+  <!-- parameterType：传入包装对象(包装了查询条件)
+      resultType：建议使用扩展对象
+   -->
+  <select id="findWeekList" resultMap="BaseResultMap" parameterType="com.demo.model.Week"
+  >
+    SELECT week.* FROM week
+    <where>
+      <if test="week!=null">
+        <if test="week.nikename!=null and week.nikename!=''">
+          week.nikename LIKE '%${week.nikename}%'
+        </if>
+      </if>
+    </where>
+  </select>
 </mapper>

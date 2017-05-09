@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.demo.model.User">
+        <id column="USER_ID" property="userId" jdbcType="INTEGER"/>
+        <result column="USER_NAME" property="userName" jdbcType="VARCHAR"/>
+        <result column="USER_PASSWAD" property="userPasswad" jdbcType="VARCHAR"/>
+        <result column="USER_HEAD" property="userHead" jdbcType="VARCHAR"/>
+        <result column="USER_CREATE_TIME" property="userCreateTime" jdbcType="VARCHAR"/>
+        <result column="USER_NIKE" property="userNike" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    USER_ID, USER_NAME, USER_PASSWAD, USER_HEAD, USER_CREATE_TIME, USER_NIKE
+  </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where USER_ID = #{userId,jdbcType=INTEGER}
+    </select>
+
+
+    <select id="selectByPrimaryName" resultMap="BaseResultMap" parameterType="com.demo.model.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where USER_NAME = #{userName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByPrimary" resultMap="BaseResultMap" parameterType="com.demo.model.User">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where USER_NAME = #{userName,jdbcType=VARCHAR} AND USER_PASSWAD=#{userPasswad,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </delete>
+
+
+    <insert id="insert" parameterType="com.demo.model.User">
+    insert into user ( USER_NAME, USER_PASSWAD, USER_CREATE_TIME)
+    values ( #{userName,jdbcType=VARCHAR}, #{userPasswad,jdbcType=VARCHAR}, #{userCreateTime,jdbcType=VARCHAR})
+  </insert>
+
+    <insert id="insertSelective" parameterType="com.demo.model.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                USER_ID,
+            </if>
+            <if test="userName != null">
+                USER_NAME,
+            </if>
+            <if test="userPasswad != null">
+                USER_PASSWAD,
+            </if>
+            <if test="userHead != null">
+                USER_HEAD,
+            </if>
+            <if test="userCreateTime != null">
+                USER_CREATE_TIME,
+            </if>
+            <if test="userNike != null">
+                USER_NIKE,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPasswad != null">
+                #{userPasswad,jdbcType=VARCHAR},
+            </if>
+            <if test="userHead != null">
+                #{userHead,jdbcType=VARCHAR},
+            </if>
+            <if test="userCreateTime != null">
+                #{userCreateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="userNike != null">
+                #{userNike,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.demo.model.User">
+        update user
+        <set>
+            <if test="userName != null">
+                USER_NAME = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="userPasswad != null">
+                USER_PASSWAD = #{userPasswad,jdbcType=VARCHAR},
+            </if>
+            <if test="userHead != null">
+                USER_HEAD = #{userHead,jdbcType=VARCHAR},
+            </if>
+            <if test="userCreateTime != null">
+                USER_CREATE_TIME = #{userCreateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="userNike != null">
+                USER_NIKE = #{userNike,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where USER_ID = #{userId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.demo.model.User">
+    update user
+    set USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_PASSWAD = #{userPasswad,jdbcType=VARCHAR},
+      USER_HEAD = #{userHead,jdbcType=VARCHAR},
+      USER_CREATE_TIME = #{userCreateTime,jdbcType=VARCHAR},
+      USER_NIKE = #{userNike,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

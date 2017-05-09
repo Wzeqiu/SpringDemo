@@ -1,6 +1,6 @@
 package com.demo.mapper;
 
-import com.demo.po.Week;
+import com.demo.model.Week;
 
 import java.util.List;
 
