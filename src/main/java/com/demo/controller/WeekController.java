@@ -19,8 +19,6 @@ public class WeekController {
 
     @Autowired
     private WeekService weekService;
-
-    //商品查询
     @RequestMapping(value = "/index")
     public ModelAndView index() throws Exception {
         //调用Service查找数据库，查询商品列表，这里使用静态数据模拟
@@ -35,7 +33,12 @@ public class WeekController {
         System.out.println("注解方式:ItemsComtroller......");
         return modelAndView;
     }
-    //商品查询
+//    @RequestMapping(value = "/index")
+//    public String index() throws Exception {
+////        modelAndView.setViewName("index");
+//        System.out.println("注解方式:ItemsComtroller......");
+//        return "index";
+//    }
     @RequestMapping(value = "/datas")
     public ModelAndView datas() throws Exception {
         //调用Service查找数据库，查询商品列表，这里使用静态数据模拟

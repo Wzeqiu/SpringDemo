@@ -6,7 +6,7 @@
 <generatorConfiguration>
     <!-- 数据库驱动包位置 -->
     <classPathEntry
-            location="C:\Users\WangZeQiu\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/>
+            location="CC:\Users\User\.m2\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar"/>
 
     <context id="testTables" targetRuntime="MyBatis3">
         <commentGenerator>
